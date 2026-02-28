@@ -251,38 +251,39 @@ st.markdown(f"""
 
 # ── STAT ROW ──────────────────────────────────────────────────────────────────
 st.markdown(f"""
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:1.5rem;">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem;">
     <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #00d4ff;border-radius:14px;padding:18px 14px;">
-        <div style="font-size:1.2rem;margin-bottom:10px;">🤖</div>
-        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
-             color:#475569;margin-bottom:5px;">Model</div>
-        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
-             font-weight:800;color:#00d4ff;">Random Forest</div>
+         border-top:2px solid #00d4ff;border-radius:12px;padding:16px 12px;overflow:hidden;">
+        <div style="font-size:1rem;margin-bottom:8px;">🤖</div>
+        <div style="font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;
+             color:#475569;margin-bottom:4px;">Model</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.78rem;
+             font-weight:800;color:#00d4ff;overflow:hidden;text-overflow:ellipsis;
+             white-space:nowrap;">Random Forest</div>
     </div>
     <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #7c3aed;border-radius:14px;padding:18px 14px;">
-        <div style="font-size:1.2rem;margin-bottom:10px;">🎯</div>
-        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
-             color:#475569;margin-bottom:5px;">Accuracy</div>
-        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
-             font-weight:800;color:#7c3aed;">74.03%</div>
+         border-top:2px solid #7c3aed;border-radius:12px;padding:16px 12px;overflow:hidden;">
+        <div style="font-size:1rem;margin-bottom:8px;">🎯</div>
+        <div style="font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;
+             color:#475569;margin-bottom:4px;">Accuracy</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.78rem;
+             font-weight:800;color:#7c3aed;white-space:nowrap;">74.03%</div>
     </div>
     <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #00f5a0;border-radius:14px;padding:18px 14px;">
-        <div style="font-size:1.2rem;margin-bottom:10px;">👥</div>
-        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
-             color:#475569;margin-bottom:5px;">Dataset</div>
-        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
-             font-weight:800;color:#00f5a0;">768 Patients</div>
+         border-top:2px solid #00f5a0;border-radius:12px;padding:16px 12px;overflow:hidden;">
+        <div style="font-size:1rem;margin-bottom:8px;">👥</div>
+        <div style="font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;
+             color:#475569;margin-bottom:4px;">Dataset</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.78rem;
+             font-weight:800;color:#00f5a0;white-space:nowrap;">768 Patients</div>
     </div>
     <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #ff9f43;border-radius:14px;padding:18px 14px;">
-        <div style="font-size:1.2rem;margin-bottom:10px;">🔬</div>
-        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
-             color:#475569;margin-bottom:5px;">Features</div>
-        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
-             font-weight:800;color:#ff9f43;">8 Biomarkers</div>
+         border-top:2px solid #ff9f43;border-radius:12px;padding:16px 12px;overflow:hidden;">
+        <div style="font-size:1rem;margin-bottom:8px;">🔬</div>
+        <div style="font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;
+             color:#475569;margin-bottom:4px;">Features</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.78rem;
+             font-weight:800;color:#ff9f43;white-space:nowrap;">8 Biomarkers</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -297,8 +298,9 @@ with left:
     st.markdown(f"""
     <div style="background:{rb};border:1px solid {rc}33;border-left:4px solid {rc};
          border-radius:14px;padding:26px;margin-bottom:1rem;">
-        <div style="font-family:'Syne',sans-serif;font-size:1.2rem;
-             font-weight:800;color:{rc};margin-bottom:0.6rem;">{rtitle}</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;
+             font-weight:800;color:{rc};margin-bottom:0.6rem;
+             white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{rtitle}</div>
         <div style="color:#64748b;font-size:0.83rem;line-height:1.6;
              margin-bottom:1.5rem;">{rdesc}</div>
         <div style="display:flex;gap:2rem;">
@@ -306,14 +308,14 @@ with left:
                 <div style="font-size:0.62rem;letter-spacing:2px;
                      text-transform:uppercase;color:#334155;margin-bottom:3px;">
                      Risk Score</div>
-                <div style="font-family:'Syne',sans-serif;font-size:2.4rem;
+                <div style="font-family:'Syne',sans-serif;font-size:1.9rem;
                      font-weight:800;color:{rc};line-height:1;">{risk_pct}%</div>
             </div>
             <div>
                 <div style="font-size:0.62rem;letter-spacing:2px;
                      text-transform:uppercase;color:#334155;margin-bottom:3px;">
                      Safe Score</div>
-                <div style="font-family:'Syne',sans-serif;font-size:2.4rem;
+                <div style="font-family:'Syne',sans-serif;font-size:1.9rem;
                      font-weight:800;color:#00f5a0;line-height:1;">{safe_pct}%</div>
             </div>
         </div>
