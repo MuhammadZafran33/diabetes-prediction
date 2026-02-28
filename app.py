@@ -182,16 +182,18 @@ with st.sidebar:
     age         = st.slider("Age (years)", 21, 81, 33)
 
     st.markdown("<div style='height:0.8rem'></div>", unsafe_allow_html=True)
-    st.button("🔬 Analyze Risk Now", use_container_width=True)
+    analyze_clicked = st.button("🔬 Analyze Risk Now", use_container_width=True)
+    if analyze_clicked:
+        st.toast("✅ Analysis complete! Results updated below.", icon="🔬")
 
     st.markdown("""
     <div style="margin-top:1.2rem;padding:14px 16px;
          background:rgba(0,212,255,0.04);
          border:1px solid rgba(0,212,255,0.1);border-radius:10px;">
-        <div style="color:#334155;font-size:0.68rem;line-height:1.8;letter-spacing:0.3px;">
-            ⚡ <b style="color:#475569;">Model:</b> Random Forest<br>
-            📊 <b style="color:#475569;">Accuracy:</b> 74.03%<br>
-            👥 <b style="color:#475569;">Trained on:</b> 768 patients<br>
+        <div style="color:#64748b;font-size:0.68rem;line-height:1.8;letter-spacing:0.3px;">
+            ⚡ <b style="color:#94a3b8;">Model:</b> Random Forest<br>
+            📊 <b style="color:#94a3b8;">Accuracy:</b> 74.03%<br>
+            👥 <b style="color:#94a3b8;">Trained on:</b> 768 patients<br>
             🔒 Educational use only
         </div>
     </div>
@@ -207,14 +209,14 @@ risk_pct     = round(probability[1] * 100, 1)
 safe_pct     = round(probability[0] * 100, 1)
 is_high      = prediction == 1
 
-rc = "#ff4d6d" if is_high else "#00f5a0"
-rb = "rgba(255,77,109,0.07)" if is_high else "rgba(0,245,160,0.07)"
-rb2 = "rgba(255,77,109,0.2)" if is_high else "rgba(0,245,160,0.2)"
-rtitle = "⚠ HIGH RISK DETECTED" if is_high else "✓ LOW RISK PROFILE"
-rdesc = ("Elevated biomarker levels indicate significant diabetes risk. "
-         "Immediate specialist consultation is recommended." if is_high else
-         "Biomarker profile suggests low diabetes risk. "
-         "Maintain healthy habits and schedule routine checkups.")
+rc     = "#ff4d6d" if is_high else "#00f5a0"
+rb     = "rgba(255,77,109,0.07)" if is_high else "rgba(0,245,160,0.07)"
+rb2    = "rgba(255,77,109,0.2)"  if is_high else "rgba(0,245,160,0.2)"
+rtitle = "⚠ HIGH RISK DETECTED"  if is_high else "✓ LOW RISK PROFILE"
+rdesc  = ("Elevated biomarker levels indicate significant diabetes risk. "
+          "Immediate specialist consultation is recommended." if is_high else
+          "Biomarker profile suggests low diabetes risk. "
+          "Maintain healthy habits and schedule routine checkups.")
 
 
 # ── HEADER ────────────────────────────────────────────────────────────────────
@@ -249,41 +251,42 @@ st.markdown(f"""
 
 # ── STAT ROW ──────────────────────────────────────────────────────────────────
 st.markdown(f"""
-<div style="display:flex;gap:16px;margin-bottom:1.5rem;flex-wrap:nowrap;">
-    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #00d4ff;border-radius:14px;padding:20px;">
-        <div style="font-size:1.3rem;margin-bottom:8px;">🤖</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
-             color:#334155;margin-bottom:6px;">MODEL</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:1.5rem;">
+    <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #00d4ff;border-radius:14px;padding:18px 14px;">
+        <div style="font-size:1.2rem;margin-bottom:10px;">🤖</div>
+        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
+             color:#475569;margin-bottom:5px;">Model</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
              font-weight:800;color:#00d4ff;">Random Forest</div>
     </div>
-    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #7c3aed;border-radius:14px;padding:20px;">
-        <div style="font-size:1.3rem;margin-bottom:8px;">🎯</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
-             color:#334155;margin-bottom:6px;">ACCURACY</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+    <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #7c3aed;border-radius:14px;padding:18px 14px;">
+        <div style="font-size:1.2rem;margin-bottom:10px;">🎯</div>
+        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
+             color:#475569;margin-bottom:5px;">Accuracy</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
              font-weight:800;color:#7c3aed;">74.03%</div>
     </div>
-    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #00f5a0;border-radius:14px;padding:20px;">
-        <div style="font-size:1.3rem;margin-bottom:8px;">👥</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
-             color:#334155;margin-bottom:6px;">DATASET</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+    <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #00f5a0;border-radius:14px;padding:18px 14px;">
+        <div style="font-size:1.2rem;margin-bottom:10px;">👥</div>
+        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
+             color:#475569;margin-bottom:5px;">Dataset</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
              font-weight:800;color:#00f5a0;">768 Patients</div>
     </div>
-    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-         border-top:2px solid #ff9f43;border-radius:14px;padding:20px;">
-        <div style="font-size:1.3rem;margin-bottom:8px;">🔬</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
-             color:#334155;margin-bottom:6px;">FEATURES</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+    <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #ff9f43;border-radius:14px;padding:18px 14px;">
+        <div style="font-size:1.2rem;margin-bottom:10px;">🔬</div>
+        <div style="font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;
+             color:#475569;margin-bottom:5px;">Features</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.9rem;
              font-weight:800;color:#ff9f43;">8 Biomarkers</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 # ── MAIN TWO COLUMNS ──────────────────────────────────────────────────────────
@@ -519,19 +522,21 @@ st.plotly_chart(fig_r, use_container_width=True, config={'displayModeBar':False}
 
 # ── FOOTER ────────────────────────────────────────────────────────────────────
 st.markdown("""
-<div style="border-top:1px solid rgba(255,255,255,0.04);
+<div style="border-top:1px solid rgba(255,255,255,0.07);
      padding:2.5rem 0 1.5rem 0;text-align:center;margin-top:2rem;">
     <div style="font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;
-         letter-spacing:3px;text-transform:uppercase;color:#1e293b;margin-bottom:0.6rem;">
+         letter-spacing:3px;text-transform:uppercase;color:#64748b;margin-bottom:0.6rem;">
         ⚕ Medical Disclaimer
     </div>
-    <div style="color:#1e3a5f;font-size:0.75rem;max-width:520px;
-         margin:0 auto;line-height:1.7;">
+    <div style="color:#475569;font-size:0.78rem;max-width:520px;
+         margin:0 auto;line-height:1.8;">
         This tool is for educational purposes only and does not constitute medical advice.
         Always consult a qualified healthcare professional for diagnosis and treatment decisions.
     </div>
-    <div style="color:#1e293b;font-size:0.68rem;margin-top:1.2rem;letter-spacing:1.5px;">
-        Built by Zafii ML &nbsp;·&nbsp; Random Forest Classifier &nbsp;·&nbsp; Powered by Machine Learning
+    <div style="color:#334155;font-size:0.7rem;margin-top:1.2rem;letter-spacing:1.5px;">
+        Built by <span style="color:#00d4ff;font-weight:600;">Zafii ML</span>
+        &nbsp;·&nbsp; Random Forest Classifier
+        &nbsp;·&nbsp; Powered by Machine Learning
     </div>
 </div>
 """, unsafe_allow_html=True)
