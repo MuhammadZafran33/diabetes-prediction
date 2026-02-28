@@ -248,26 +248,42 @@ st.markdown(f"""
 
 
 # ── STAT ROW ──────────────────────────────────────────────────────────────────
-c1, c2, c3, c4 = st.columns(4)
-cards = [
-    (c1, "🤖", "MODEL", "Random Forest", "#00d4ff"),
-    (c2, "🎯", "ACCURACY", "74.03%", "#7c3aed"),
-    (c3, "👥", "DATASET", "768 Patients", "#00f5a0"),
-    (c4, "🔬", "FEATURES", "8 Biomarkers", "#ff9f43"),
-]
-for col, icon, label, val, color in cards:
-    with col:
-        st.markdown(f"""
-        <div style="background:#0c1220;border:1px solid rgba(255,255,255,0.05);
-             border-top:2px solid {color};border-radius:14px;
-             padding:18px 16px;margin-bottom:1rem;white-space:nowrap;overflow:hidden;">
-            <div style="font-size:1.2rem;margin-bottom:8px;">{icon}</div>
-            <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
-                 color:#334155;margin-bottom:5px;">{label}</div>
-            <div style="font-family:'Syne',sans-serif;font-size:1.05rem;
-                 font-weight:800;color:{color};white-space:nowrap;">{val}</div>
-        </div>
-        """, unsafe_allow_html=True)
+st.markdown(f"""
+<div style="display:flex;gap:16px;margin-bottom:1.5rem;flex-wrap:nowrap;">
+    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #00d4ff;border-radius:14px;padding:20px;">
+        <div style="font-size:1.3rem;margin-bottom:8px;">🤖</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
+             color:#334155;margin-bottom:6px;">MODEL</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+             font-weight:800;color:#00d4ff;">Random Forest</div>
+    </div>
+    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #7c3aed;border-radius:14px;padding:20px;">
+        <div style="font-size:1.3rem;margin-bottom:8px;">🎯</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
+             color:#334155;margin-bottom:6px;">ACCURACY</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+             font-weight:800;color:#7c3aed;">74.03%</div>
+    </div>
+    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #00f5a0;border-radius:14px;padding:20px;">
+        <div style="font-size:1.3rem;margin-bottom:8px;">👥</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
+             color:#334155;margin-bottom:6px;">DATASET</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+             font-weight:800;color:#00f5a0;">768 Patients</div>
+    </div>
+    <div style="flex:1;background:#0c1220;border:1px solid rgba(255,255,255,0.05);
+         border-top:2px solid #ff9f43;border-radius:14px;padding:20px;">
+        <div style="font-size:1.3rem;margin-bottom:8px;">🔬</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
+             color:#334155;margin-bottom:6px;">FEATURES</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;
+             font-weight:800;color:#ff9f43;">8 Biomarkers</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # ── MAIN TWO COLUMNS ──────────────────────────────────────────────────────────
