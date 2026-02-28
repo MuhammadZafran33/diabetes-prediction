@@ -5,3 +5,4 @@ numpy>=2.0.0
 matplotlib>=3.9.0
 pillow>=11.0.0
 seaborn>=0.13.0
+plotly>=5.18.0
